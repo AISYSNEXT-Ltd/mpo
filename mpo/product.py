@@ -85,7 +85,7 @@ class ProductMapper():
 
         presta_type = 'simple'
         product_type = odoo['detailed_type']
-        name = ""
+        name = odoo['name']
 
         if product_type == 'service':
             presta_type = 'virtual'
@@ -187,10 +187,8 @@ class ProductMapper():
                 brand = odoo.env['product.brand'].browse(values['product_brand_id'])
 
                 presta_product['product']['id_manufacturer'] = brand.prestashop_id
-                presta_product['product']['manufacturer_name'] = brand.name
             elif odoo.product_brand_id:
                 presta_product['product']['id_manufacturer'] =  odoo.product_brand_id.prestashop_id
-                presta_product['product']['manufacturer_name'] =  odoo.product_brand_id.name
 
 
         else:
